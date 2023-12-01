@@ -85,9 +85,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }else{
             TextView txtNoInputSource = new TextView(this);
-            txtNoInputSource.setText("No Input Source Detected"); // Set the text for the button
+            txtNoInputSource.setText("No Input Source Detected");
 
-            // You can also set other properties programmatically, such as layout parameters
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
