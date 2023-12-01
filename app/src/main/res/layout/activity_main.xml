@@ -13,58 +13,8 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/mytextfield"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:ems="10"
-            android:enabled="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:selectAllOnFocus="false"
-            android:text="Select Input"
-            android:textAlignment="center" />
 
-<!--        <Button-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:id="@+id/buttonhw1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="hw1" />-->
 
-<!--        <Button-->
-<!--            android:id="@+id/buttonHw2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="hw2" />-->
 
-<!--        <Button-->
-<!--            android:id="@+id/buttonhw3"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:enabled="true"-->
-<!--            android:text="hw3" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/buttonhw4"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:enabled="true"-->
-<!--            android:text="hw4" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/buttonhw5"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:enabled="true"-->
-<!--            android:text="hw5" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/buttonhw6"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:enabled="true"-->
-<!--            android:text="hw6" />-->
     </LinearLayout>
 </RelativeLayout>
