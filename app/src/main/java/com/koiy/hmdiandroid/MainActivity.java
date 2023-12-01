@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,26 +20,15 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    //    TvView view;
-    TextView tv;
+
     StringBuilder sb;
 
 
-    public void reportState(final String state) {
-        this.runOnUiThread(new Runnable() {
-            public void run() {
-                sb.append(state);
-                tv.setText(sb.toString());
-            }
-        });
-    }
+
 
     private void openActionView(TvInputInfo tvInputInfo) {
 
         if (tvInputInfo != null) {
-//
-//            TvInputInfo tvInputInfo;
-//            tvInputInfo = inputInfoList.get(index);
             Uri uri;
 
             if (tvInputInfo.isPassthroughInput()) {
@@ -65,16 +54,38 @@ public class MainActivity extends AppCompatActivity {
         TvInputManager mTvInputManager = (TvInputManager) getSystemService(Context.TV_INPUT_SERVICE);
         sb = new StringBuilder();
         List<TvInputInfo> inputs = mTvInputManager.getTvInputList();
-        tv = findViewById(R.id.mytextfield);
+//
 
         LinearLayout buttonCollention = findViewById(R.id.buttonCollention);
 
-        for (TvInputInfo tvInputInfo : inputs) {
+        if(inputs.stream().count()>0){
+            for (TvInputInfo tvInputInfo : inputs) {
 
-            String inputName = extractName(tvInputInfo.getId());
-            // Creating a new Button
-            Button newButton = new Button(this);
-            newButton.setText(inputName); // Set the text for the button
+                String inputName = extractName(tvInputInfo.getId());
+                Button newButton = new Button(this);
+                newButton.setText(inputName);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
+                layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
+
+                newButton.setLayoutParams(layoutParams);
+
+                buttonCollention.addView(newButton);
+
+
+                newButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        openActionView(tvInputInfo);
+                    }
+                });
+            }
+        }else{
+            TextView txtNoInputSource = new TextView(this);
+            txtNoInputSource.setText("No Input Source Detected"); // Set the text for the button
 
             // You can also set other properties programmatically, such as layout parameters
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -83,21 +94,12 @@ public class MainActivity extends AppCompatActivity {
             );
             layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
 
-            newButton.setLayoutParams(layoutParams);
+            txtNoInputSource.setLayoutParams(layoutParams);
 
             // Adding the button to the LinearLayout
-            buttonCollention.addView(newButton);
-
-            // Adding an OnClickListener to the button
-            newButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Handle button click event here
-                    Toast.makeText(MainActivity.this, inputName, Toast.LENGTH_SHORT).show();
-                    openActionView(tvInputInfo);
-                }
-            });
+            buttonCollention.addView(txtNoInputSource);
         }
+
 
 
     }
